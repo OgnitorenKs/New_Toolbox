@@ -29,7 +29,7 @@ echo off
 chcp 65001 > NUL 2>&1
 setlocal enabledelayedexpansion
 title  OgnitorenKs Toolbox
-set Version=Dev-1.0
+set Version=Dev-1.1
 cls
 :: Renklendirm için gerekli
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E#&echo on&for %%b in (1) do rem"') do (set R=%%b)
@@ -111,7 +111,7 @@ dir /b "C:\ProgramData\chocolatey\bin\choco.exe" > NUL 2>&1
 						   Call :LT T0015&echo  %R%[92m !LT!... %R%[0m
 						   %NSudo% Powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && set "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"
 )
-DEL /F /Q /A %L%\Log\* > NUL 2>&1
+DEL /F /Q /A %L%\Log\Appx > NUL 2>&1
 Call %Lang% :Menu_3
 Call :LT T0002&set /p Value_M=%R%[32m  !LT! %R%[90mx,y: %R%[0m
 Call :Upper %Value_M% Value_M
