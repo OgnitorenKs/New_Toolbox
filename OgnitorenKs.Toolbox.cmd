@@ -46,7 +46,7 @@ reg query "HKU\S-1-5-19" > NUL 2>&1
 :: Boşluk ve Türkçe karakter kontrolü
 FOR %%a in (Ö ö Ü ü Ğ ğ Ş ş Ç ç ı İ) do (
 	echo %L% | Find "%%a" > NUL 2>&1
-		if !errorlevel! EQU 0 (cls&Call :LT E0001&echo.&echo %R%[31m !LT! %R%[0m&Call :TO 5&exit)
+		if !errorlevel! EQU 0 (cls&echo.&echo %R%[31m Toolbox yolunda Türkçe karakter bulunuyor%R%[0m&echo.&echo %R%[31m There are Turkish characters in the Toolbox path%R%[0m&Call :TO 5&exit)
 )
 if "%L%" NEQ "%L: =%" (cls&Call :LT E0002&echo.&echo %R%[31m !LT! %R%[0m&Call :TO 5&exit)
 :: Sistem mimari kontrolü
@@ -75,6 +75,7 @@ FOR /F "delims=> tokens=2" %%a in ('findstr /i "Toolbox.Update." %L%\Settings.in
 	)
 )
 ::
+
 :Main_Menu
 Call :Menu_Taslak
 Call %Lang% :Menu_1
