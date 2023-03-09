@@ -29,7 +29,7 @@ echo off
 chcp 65001 > NUL 2>&1
 setlocal enabledelayedexpansion
 title  OgnitorenKs Toolbox
-set Version=3.9
+set Version=Dev-1.0
 cls
 :: Renklendirm için gerekli
 for /F "tokens=1,2 delims=#" %%a in ('"prompt #$H#$E#&echo on&for %%b in (1) do rem"') do (set R=%%b)
@@ -56,7 +56,25 @@ FOR /F "tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Sess
 :: Sistem bilgileri
 Call :Powershell "Get-CimInstance Win32_OperatingSystem | Select-Object Caption,InstallDate,OSArchitecture,RegisteredUser,CSName | FL" > %L%\Log\OS
 FOR /F "tokens=5" %%a in ('Findstr /i "Caption" %L%\Log\OS') do set Win=%%a
-
+:: Sistem kontrolü
+::if %Win% EQU 10 (goto Main_Menu)
+::if %Win% EQU 11 (goto Main_Menu)
+::cls&Call :LT E0007&echo.&echo %R%[31m !LT! %R%[0m&Call :TO 10&exit)
+::
+Call :Link Link_4_&Call :PSDownload "%L%\Bin\Extra\Link.txt"
+FOR /F "delims=> tokens=2" %%a in ('findstr /i "Toolbox.Update." %L%\Settings.ini') do (
+	if %%a EQU 0 (FOR /F "delims=> tokens=2" %%b in ('Findstr /i "Toolbox.Version." %L%\Bin\Extra\Link.txt') do (
+					if !Version! NEQ %%b (cls&Call :LT T0022&echo.&echo %R%[92m !LT! %R%[0m
+										  Call :LT T0023&echo.&echo %R%[33m !LT! %R%[90m=%R%[37m !Version! %R%[0m
+										  Call :LT T0024&echo %R%[33m !LT! %R%[90m=%R%[37m %%b %R%[0m
+										  Call :TO 5
+										  Call :Link Link_3_&Call :PSDownload "%Temp%\ToolboxUpdate.cmd"
+										  Call :Powershell "Start-Process '%Location%\ToolboxUpdate.cmd'"
+										  exit)
+		)
+	)
+)
+::
 :Main_Menu
 Call :Menu_Taslak
 Call %Lang% :Menu_1
@@ -568,6 +586,10 @@ goto :eof
 Reg delete %* /f > NUL 2>&1
 	if %errorlevel% NEQ 0 (%NSudo% Reg delete %* /f)
 goto :eof
+::
+:PSDownload
+Call :Powershell "& { iwr %Link% -OutFile %~1 }"
+goto :eof
 
 
 
@@ -589,7 +611,7 @@ echo    %R%[90m█  █ █    ██  █  █    █   █  █ █  █ █  
 echo    %R%[90m█  █ █ ██ █ █ █  █    █   █  █ ████ ██  █ █ █ ██   ████    %R%[90m  █   █  █ █  █ █   ███  █  █   █  %R%[0m
 echo    %R%[90m█  █ █  █ █  ██  █    █   █  █ █ █  █   █  ██ █ █     █    %R%[90m  █   █  █ █  █ █   █  █ █  █  █ █ %R%[0m
 echo    %R%[90m████ ████ █   █ ███   █   ████ █  █ ███ █   █ █  █ ████    %R%[90m  █   ████ ████ ███ ███  ████ █   █%R%[0m
-echo    %R%[90mhttps://ognitorenks.com.tr                                                                 %R%[90m%version%%R%[0m
+echo    %R%[90mhttps://ognitorenks.com.tr                                                             %R%[90m%version%%R%[0m
 echo.
 echo           %R%[90m %Value2%: %Value1% ^| %Value4% ^| %Value3%%R%[0m
 Call :VR

@@ -81,6 +81,7 @@ E0003>Sistem mimariniz x64 değil>
 E0004>Chocolatey uygulaması bulunamadı>
 E0005>Winget bulunamadı>
 E0006>Microsoft Store yüklü değil>
+E0007>Toolbox, Windows 10/11 sistemlerde çalışmaktadır>
 
 
 T0001>İşlem>
@@ -104,6 +105,9 @@ T0018>All in One Runtimes yükleniyor>
 T0019>Net Framework 3.5 yükleniyor>
 T0020>Net Framework 4.5+ yükleniyor>
 T0021>DirectPlay yükleniyor>
+T0022>Toolbox Güncelleme>
+T0023>Mevcut Sürüm>
+T0024>Güncel Sürüm>
 
 
 B0001>Bluetooth>
