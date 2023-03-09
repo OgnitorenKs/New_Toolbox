@@ -37,7 +37,7 @@ echo Set oLink = oWS.CreateShortcut^(sLinkFile^)
 echo oLink.TargetPath = "%L%\OgnitorenKs.Toolbox.cmd"
 echo oLink.WorkingDirectory = "%L%"
 echo oLink.Description = "OgnitorenKs Toolbox"
-echo oLink.IconLocation = "%L%\Bin\icon\Ogni.ico"
+echo oLink.IconLocation = "%L%\Bin\Icon\Ogni.ico"
 echo oLink.Save
 ) > %Temp%\OgnitorenKs.Shortcut.vbs
 cscript "%Temp%\OgnitorenKs.Shortcut.vbs"
