@@ -32,7 +32,7 @@ DEL /F /Q /A "%temp%\NewToolbox.zip" > NUL 2>&1
 
 (
 echo Set oWS = WScript.CreateObject^("WScript.Shell"^)
-echo sLinkFile = "C:\Users\%username%\Desktop\OgnitorenKs.Toolbox.lnk"
+echo sLinkFile = "C:\Users\%username%\Desktop\OgnitorenKs.Toolbox.Dev.lnk"
 echo Set oLink = oWS.CreateShortcut^(sLinkFile^)
 echo oLink.TargetPath = "%L%\OgnitorenKs.Toolbox.cmd"
 echo oLink.WorkingDirectory = "%L%"
