@@ -1,8 +1,6 @@
-ToolboxVersion>3.9>
+Toolbox.Version.>Dev-1.0>
 
 Link_1_>ms-windows-store://pdp/?ProductId=9nblggh4nns1&mode=mini>Uygulama yükleyici>
 Link_2_>ms-windows-store://downloadsandupdates>Store güncelleme bölümü>
-
-
-Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+Link_3_>
 
